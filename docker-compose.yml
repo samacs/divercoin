@@ -22,7 +22,6 @@ x-app: &rails-app
     PSQL_HISTFILE: /usr/local/history/.psql_history
     IRB_HISTFILE: /usr/local/history/.irb_history
     EDITOR: vim
-    HUB_URL: http://selenium:4444/wd/hub
   tmpfs:
     - /tmp
     - /app/tmp/pids
