@@ -9,6 +9,7 @@
         {
             "files": "*.yml",
             "options": {
+                "singleQuote": true,
                 "tabWidth": 2
             }
         }

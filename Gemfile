@@ -83,3 +83,5 @@ group :test do
   gem 'sqlite3'
   gem 'timecop'
 end
+
+gem "decent_exposure", "~> 3.0"

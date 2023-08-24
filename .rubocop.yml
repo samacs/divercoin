@@ -19,3 +19,9 @@ Style/Documentation:
 Metrics/MethodLength:
   Exclude:
     - db/migrate/*.rb
+
+RSpec/MultipleExpectations:
+  Max: 4
+
+RSpec/Focus:
+  AutoCorrect: false
