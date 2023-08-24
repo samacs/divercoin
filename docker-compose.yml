@@ -1,0 +1,109 @@
+version: "3.8"
+
+x-app: &rails-app
+  build:
+    context: .
+    dockerfile: ./docker/ruby/Dockerfile
+    args:
+      RUBY_VERSION: ${RUBY_VERSION:-3.2.2}
+      PG_MAJOR: ${PG_MAJOR:-15}
+      NODE_MAJOR: ${NODE_MAJOR:-18}
+      YARN_VERSION: ${YARN_VERSION:-1.22.19}
+      BUNDLER_VERSION: ${BUNDLER_VERSION:-2.4.19}
+  image: ${DOCKER_REGISTRY:-samacs}/${IMAGE_NAME:-divercoin}-development:${TAG:-latest}
+  environment: &env
+    NODE_ENV: ${NODE_ENV:-development}
+    RAILS_ENV: ${RAILS_ENV:-development}
+    MALLOC_ARENA_MAX: 2
+    WEB_CONCURRENCY: ${WEB_CONCURRENCY:-2}
+    BOOTSNAP_CACHE_DIR: /usr/local/bundle/_bootsnap
+    YARN_CACHE_FOLDER: /app/node_modules/.yarn-cache
+    HISTFILE: /usr/local/history/.bash_history
+    PSQL_HISTFILE: /usr/local/history/.psql_history
+    IRB_HISTFILE: /usr/local/history/.irb_history
+    EDITOR: vim
+    HUB_URL: http://selenium:4444/wd/hub
+  tmpfs:
+    - /tmp
+    - /app/tmp/pids
+  stdin_open: true
+  tty: true
+  volumes:
+    - .:/app:cached
+    - bundle:/usr/local/bundle
+    - rails_cache:/app/tmp/cache
+    - node_modules:/app/node_modules
+    - history:/usr/local/history
+    - .psqlrc:/root/.psqlrc:ro
+    - .bashrc:/root/.bashrc:ro
+    - .gemrc:/root/.gemrc
+  depends_on: &depends_on
+    postgres:
+      condition: service_healthy
+    redis:
+      condition: service_healthy
+
+services:
+  web:
+    <<: *rails-app
+    hostname: divercoin-web
+    container_name: divercoin-web
+    command: ./bin/dev
+    ports:
+      - "3000:3000"
+      - "3100:3100"
+    depends_on:
+      <<: *depends_on
+      worker:
+        condition: service_started
+      selenium:
+        condition: service_started
+
+  worker:
+    <<: *rails-app
+    hostname: divercoin-worker
+    container_name: divercoin-worker
+    command: ./bin/sidekiq -C config/sidekiq.yml
+
+  postgres:
+    hostname: divercoin-postgres
+    image: postgres:${PG_MAJOR:-15}
+    volumes:
+      - .psqlrc:/root/.psqlrc:ro
+      - postgres-data:/var/lib/postgresql/data
+      - history:/usr/local/history
+    environment:
+      PSQL_HISTFILE: /usr/local/history/.psql_history
+      POSTGRES_USER: ${POSTGRES_USER:-divercoin}
+      POSTGRES_DB: ${POSTGRES_DB:-divercoin_development}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-divercoin}
+    healthcheck:
+      test: pg_isready -U ${POSTGRES_USER:-divercoin} -d ${POSTGRES_DB:-divercoin_development} -h 127.0.0.1
+      interval: 5s
+
+  redis:
+    hostname: divercoin-redis
+    image: redis:${REDIS_VERSION:-6}-alpine
+    volumes:
+      - redis-data:/data
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD:-divercoin}
+    healthcheck:
+      test: redis-cli ping
+      interval: 1s
+      timeout: 3s
+      retries: 30
+
+  selenium:
+    image: selenium/standalone-chrome:3.141.59-zirconium
+    hostname: selenium
+    container_name: selenium
+    volumes:
+      - /dev/shm:/dev/shm
+
+volumes:
+  bundle:
+  node_modules:
+  history:
+  rails_cache:
+  postgres-data:
+  redis-data:

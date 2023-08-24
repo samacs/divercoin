@@ -1,0 +1,3 @@
+web: env RUBY_DEBUG_OPEN=true bin/rails server -b "ssl://0.0.0.0:$PORT?cert=ssl/divercoin.local.pem&key=ssl/divercoin.local.key"
+js: yarn build --reload
+css: yarn build:css --watch
