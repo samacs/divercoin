@@ -31,7 +31,7 @@ Dotenv.load('.env.test.local', '.env.test', '.env.local', '.env')
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
-shared_examples_for = %w[requests mailers]
+shared_examples_for = %w[features models]
 
 shared_examples_for.each do |folder|
   Dir[Rails.root.join("spec/#{folder}/**/shared_examples/*.rb")].each { |f| require f }
