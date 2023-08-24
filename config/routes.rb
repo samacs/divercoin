@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   root 'static_pages#show', page: 'home'
 
   get '/*page', to: 'static_pages#show', as: :static_pages, constraints: lambda { |request|
-                                                                           request.path.includes?('/rails')
+                                                                           request.path.exclude?('/rails')
                                                                          }
 end
