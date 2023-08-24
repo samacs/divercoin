@@ -22,7 +22,6 @@ x-app: &rails-app
     PSQL_HISTFILE: /usr/local/history/.psql_history
     IRB_HISTFILE: /usr/local/history/.irb_history
     EDITOR: vim
-    HUB_URL: http://selenium:4444/wd/hub
   tmpfs:
     - /tmp
     - /app/tmp/pids
@@ -67,6 +66,7 @@ services:
 
   postgres:
     hostname: divercoin-postgres
+    container_name: divercoin-postgres
     image: postgres:${PG_MAJOR:-15}
     volumes:
       - .psqlrc:/root/.psqlrc:ro
@@ -83,6 +83,7 @@ services:
 
   redis:
     hostname: divercoin-redis
+    container_name: divercoin-redis
     image: redis:${REDIS_VERSION:-6}-alpine
     volumes:
       - redis-data:/data
@@ -96,7 +97,7 @@ services:
   selenium:
     image: selenium/standalone-chrome:3.141.59-zirconium
     hostname: selenium
-    container_name: selenium
+    container_name: divercoin-selenium
     volumes:
       - /dev/shm:/dev/shm
 

@@ -15,6 +15,12 @@ module ApplicationHelper
     tag.meta charset:
   end
 
+  def render_flash_messages = render_shared_partial('flash_messages')
+
+  def render_form_errors(resource) = render_shared_partial('form_errors', resource:)
+
+  def render_shared_partial(partial, **) = render("shared/#{partial}", **)
+
   def render_header_partial(partial, **) = render_layout_partial("header/#{partial}", **)
 
   def render_layout_partial(partial, **) = render("layouts/#{partial}", **)

@@ -15,3 +15,13 @@ Style/FrozenStringLiteralComment:
 
 Style/Documentation:
   Enabled: false
+
+Metrics/MethodLength:
+  Exclude:
+    - db/migrate/*.rb
+
+RSpec/MultipleExpectations:
+  Max: 4
+
+RSpec/Focus:
+  AutoCorrect: false

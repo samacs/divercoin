@@ -29,6 +29,7 @@ SimpleCov.minimum_coverage ENV.fetch('MINIMUM_COVERAGE', 85).to_i
 SimpleCov.start 'rails' do
   add_group 'Actions', 'app/actions'
   add_group 'Components', 'app/components'
+  add_group 'Contracts', 'app/contracts'
   add_group 'Decorators', 'app/decorators'
   add_group 'Services', 'app/services'
   add_group 'Workers', 'app/workers'
