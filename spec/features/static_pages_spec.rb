@@ -3,15 +3,18 @@ require 'rails_helper'
 RSpec.describe 'Static pages', type: :system do
   subject { page }
 
-  describe 'GET /' do
-    before { visit root_path }
+  %w[/ /company /marketplace].each do |expected_path|
+    describe "GET #{expected_path}" do
+      let(:current_path) { expected_path }
+
+      it_behaves_like 'static page'
+    end
+  end
+
+  describe '404 Not found' do
+    before { visit '/not-existent-page' }
 
     it { is_expected.to have_http_status :ok }
-
-    it 'uses JavaScript', js: true do
-      click_button 'Default tooltip'
-
-      expect(page).to have_content 'Tooltip content'
-    end
+    its(:text) { is_expected.to match(/not found/i) }
   end
 end

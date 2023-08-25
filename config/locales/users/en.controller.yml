@@ -1,0 +1,5 @@
+---
+en:
+  users:
+    create:
+      success: "Welcome, %{user}! Your account has been created."

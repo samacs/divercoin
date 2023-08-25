@@ -1,0 +1,8 @@
+---
+en:
+  sessions:
+    new:
+      title: 'Sign in'
+      heading: 'Sign in to your account'
+      link:
+        sign_up: "Don't have an account?"

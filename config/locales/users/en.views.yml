@@ -1,0 +1,14 @@
+---
+en:
+  users:
+    new:
+      title: 'Sign up'
+      heading: 'Create your Free Account'
+      link:
+        sign_in: 'Already have an account?'
+    form:
+      label:
+        terms_of_service: |
+          I accept the %{link}.
+      link:
+        terms_of_service: 'Terms of Service'

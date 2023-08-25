@@ -1,0 +1,4 @@
+---
+en:
+  session_management:
+    not_signed_in: "User not signed in"

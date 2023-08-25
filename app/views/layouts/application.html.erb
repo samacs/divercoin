@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Divercoin</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <head>
+        <%= title %>
+        <%= meta_viewport %>
+        <%= meta_charset %>
+        <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-  </head>
+        <%= stylesheet_link_tag 'application', 'data-turbo-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true %>
+    </head>
 
-  <body>
-    <%= yield %>
-  </body>
+    <body class="pt-16">
+        <%= render_layout_partial 'header' %>
+        <%= render_flash_messages %>
+        <%= yield %>
+        <%= render_layout_partial 'footer' %>
+    </body>
 </html>
