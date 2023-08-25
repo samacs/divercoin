@@ -1,0 +1,18 @@
+<tr class="border-b dark:border-stone-700 hover:bg-stone-200 dark:hover:bg-stone-700 cursor-pointer transition" id="<%= dom_id(balance, :header) %>" data-accordion-target="#<%= dom_id(balance, :body) %>" aria-expanded="false" aria-controls="<%= dom_id(balance, :body) %>">
+    <th class="px-4 py-3 w-4">
+        <%= icon('chevron-down', class: 'w-4 h-4 shrink-0 rotate-180 fill-current', data: { accordion_icon: '' }) %>
+    </th>
+    <th scope="row" class="px-4 py-3 font-medium text-stone-900 whitespace-nowrap dark:text-white"><%= balance.reference %></th>
+    <td class="px-4 py-3"><%= number_to_currency balance.amount %></td>
+    <% Currency.active.each do |currency| %>
+        <td class="px-4 py-3">
+            <span class="mr-2 font-semibold"><%= currency.ticker.upcase %></span><%= number_with_precision balance.amount / currency.price, precision: 4 %>
+        </td>
+    <% end %>
+    <td class="px-4 py-3"></td>
+</tr>
+<tr class="hidden flex-1 overflow-x-auto w-full" id="<%= dom_id(balance, :body) %>" aria-labelledby="<%= dom_id(balance, :header) %>">
+    <td colspan="7" class="border-b dark:border-stone-700">
+        <%= render 'balances/index/profit/table', balance: %>
+    </td>
+</tr>

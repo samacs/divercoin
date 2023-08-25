@@ -47,3 +47,21 @@ The specs can also be run on `docker`:
 ```sh
 $ docker compose run --rm -it ./bin/rspec
 ```
+
+### Screenshot
+
+![Home - DiverCoin](docs/divercoin.local-Home_.png)
+
+![Sign up - DiverCoin](docs/divercoin.local-Sign-up_.png)
+ssssss
+![Sign in - DiverCoin](docs/divercoin.local-Sign-in_.png)
+
+![Home - Signed in - DiverCoin](docs/divercoin.local-Home-Signed-in_.png)
+
+![Add balance - DiverCoin](docs/divercoin.local-Add-balance_.png)
+
+![Portfolio - DiverCoin](docs/divercoin.local_Portfolio.png)
+
+![Currencies - DiverCoin](docs/divercoin.local_Currencies.png)
+
+![Settings - DiverCoin](docs/divercoin.local_Settings.png)

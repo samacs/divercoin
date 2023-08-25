@@ -1,6 +1,6 @@
 module SessionHelpers
   def sign_in_with(user_attributes)
-    sign_up_with(user_attributes) unless User.exists?(email: user_attributes[:email])
+    return sign_up_with(user_attributes) unless User.exists?(email: user_attributes[:email])
 
     visit sign_in_path
 

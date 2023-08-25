@@ -4,6 +4,7 @@ en:
   info: "Information"
   warning: "Warning"
   error: "Error"
+  not_authorized: "Not authorized"
   errors:
     one: "An error occurred"
     other: "%{count} errors occurred"

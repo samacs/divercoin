@@ -19,6 +19,21 @@ const colors = {
     },
 }
 
+const keyframes = {
+    highlight: {
+        '0%': {
+            background: '#8f8',
+        },
+        '100%': {
+            background: 'none',
+        },
+    },
+}
+
+const animation = {
+    highlight: 'highlight 1s',
+}
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     darkMode: 'class',
@@ -33,6 +48,8 @@ module.exports = {
     theme: {
         extend: {
             colors,
+            keyframes,
+            animation,
         },
         fontFamily: {
             body: [

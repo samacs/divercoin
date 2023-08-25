@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="<%= I18n.locale %>">
     <head>
         <%= title %>
         <%= meta_viewport %>
@@ -10,10 +10,10 @@
         <%= stylesheet_link_tag 'application', 'data-turbo-track': 'reload' %>
         <%= javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true %>
     </head>
-
-    <body class="pt-16">
+    <body>
         <%= render_layout_partial 'header' %>
         <%= render_flash_messages %>
+        <%= render_turbo_modal %>
         <%= yield %>
         <%= render_layout_partial 'footer' %>
     </body>

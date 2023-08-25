@@ -1,0 +1,4 @@
+---
+currency_updater_worker:
+  cron: '* * * * *'
+  class: 'CurrencyUpdaterWorker'

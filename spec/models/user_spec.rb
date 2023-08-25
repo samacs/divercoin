@@ -54,4 +54,8 @@ RSpec.describe User do
     it { is_expected.to allow_value(Faker::Internet.email).for(:email) }
     it { is_expected.not_to allow_value('invalid-email').for(:email) }
   end
+
+  describe 'associations' do
+    it { is_expected.to have_many(:balances) }
+  end
 end

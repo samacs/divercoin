@@ -1,0 +1,29 @@
+<div class="overflow-x-auto">
+    <table class="w-full text-sm text-left text-stone-500 dark:text-stone-400">
+        <thead class="text-xs text-stone-700 uppercase bg-stone-50 dark:bg-stone-700 dark:text-stone-400">
+            <tr>
+                <th scope="col" class="px-4 py-3">Currency</th>
+                <% balance.year_from_created.each do |date| %>
+                    <th scope="col" class="px-4 py-3"><%= Date::MONTHNAMES[date.month] %></th>
+                <% end %>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% currencies.each do |currency| %>
+                <tr>
+                    <th scope="row" class="px-4 py-3">
+                        <div class="flex items-center">
+                            <%= image_tag currency.image(16), class: 'w-5 h-5 mr-2', data: { lazy_src: currency.image(64) } %>
+                            <%= currency.name %>
+                        </div>
+                    </th>
+                    <% 12.times do |month| %>
+                        <td class="px-4 py-3 text-center"><%= number_to_currency(balance.profit_at(currency.monthly_profit, month), precision: 2) %></td>
+                    <% end %>
+                    <td class="px-4 py-3"><%= number_to_currency(balance.profit_at(currency.monthly_profit, 12), precision: 2) %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>

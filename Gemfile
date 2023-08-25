@@ -7,6 +7,8 @@ ruby '3.2.2'
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', require: false
 gem 'cssbundling-rails'
+gem 'decent_exposure', '~> 3.0'
+gem 'draper', '~> 4.0'
 gem 'friendly_id', '~> 5.5'
 gem 'hiredis'
 gem 'hiredis-client'
@@ -20,6 +22,7 @@ gem 'oj'
 gem 'oj_serializers'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
+gem 'pundit', '~> 2.3'
 gem 'rails', '~> 7.0.7', '>= 7.0.7.2'
 gem 'rails-settings-cached', '~> 2.9'
 gem 'redis', '~> 4.0'
@@ -82,6 +85,7 @@ group :test do
   gem 'simplecov-lcov'
   gem 'sqlite3'
   gem 'timecop'
+  gem 'webdrivers'
 end
 
-gem "decent_exposure", "~> 3.0"
+gem "faraday", "~> 2.7"
