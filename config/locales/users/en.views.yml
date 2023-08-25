@@ -11,4 +11,4 @@ en:
         terms_of_service: |
           I accept the %{link}.
       link:
-        terms_of_service: "Terms of Service"
+        terms_of_service: 'Terms of Service'

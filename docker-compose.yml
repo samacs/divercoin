@@ -80,6 +80,8 @@ services:
     healthcheck:
       test: pg_isready -U ${POSTGRES_USER:-divercoin} -d ${POSTGRES_DB:-divercoin_development} -h 127.0.0.1
       interval: 5s
+    ports:
+      - "5432:5432"
 
   redis:
     hostname: divercoin-redis
@@ -93,6 +95,8 @@ services:
       interval: 1s
       timeout: 3s
       retries: 30
+    ports:
+      - "6379:6379"
 
   selenium:
     image: selenium/standalone-chrome:3.141.59-zirconium

@@ -1,6 +1,6 @@
 <div class="flex items-center  lg:order-2">
     <%= render_header_partial('dark_mode_toggler')  %>
-    <a href="#" class="hidden lg:block text-stone-800 dark:text-white hover:bg-stone-50 focus:ring-4 focus:ring-stone-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-stone-700 focus:outline-none dark:focus:ring-stone-800">Sign in</a>
+    <%= link_to 'Sign in', sign_in_path, class: 'hidden lg:block text-stone-800 dark:text-white hover:bg-stone-50 focus:ring-4 focus:ring-stone-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-stone-700 focus:outline-none dark:focus:ring-stone-800' %>
     <%= link_to 'Get started', sign_up_path, class: 'text-white bg-rose-700 hover:bg-rose-800 focus:ring-4 focus:ring-rose-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-rose-600 dark:hover:bg-rose-700 focus:outline-none dark:focus:ring-rose-800' %>
     <%= render_header_partial('top_menu_toggler') %>
 </div>
