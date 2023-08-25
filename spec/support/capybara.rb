@@ -6,6 +6,8 @@ Capybara::Screenshot.register_driver(:chrome_headless) do |driver, path|
   driver.browser.save_screenshot(path)
 end
 
+Selenium::WebDriver.logger.level = :error
+
 Capybara.register_driver :chrome_headless do |app|
   options = Selenium::WebDriver::Chrome::Options.new
   %w[
@@ -15,11 +17,11 @@ Capybara.register_driver :chrome_headless do |app|
     --window-size=1400,1400
   ].each { |argument| options.add_argument(argument) }
 
-  if ENV.fetch('HUB_URL')
+  if ENV.fetch('HUB_URL', nil)
     # Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
     # Capybara.server_port = 4000
 
-    Capybara::Selenium::Driver.new(app, browser: :remote, url: ENV['HUB_URL'], options:)
+    Capybara::Selenium::Driver.new(app, browser: :remote, url: ENV.fetch('HUB_URL', nil), options:)
   else
     Capybara::Selenium::Driver.new(app, browser: :chrome, options:)
   end

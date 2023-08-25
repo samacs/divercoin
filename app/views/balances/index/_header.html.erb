@@ -1,0 +1,10 @@
+<div class="flex-row items-center justify-between p-4 space-y-3 sm:flex sm:space-y-0 sm:space-x-4">
+    <div>
+        <h1 class="mr-3 text-4xl font-semibold dark:text-white"><%= t('.heading') %></h1>
+        <p class="text-stone-500 dark:text-stone-400">Manage all your existing users or add a new one</p>
+    </div>
+    <%= link_to new_balance_path, class: 'flex items-center justify-center px-4 py-2 text-sm font-medium text-white rounded-lg bg-rose-700 hover:bg-rose-800 focus:ring-4 focus:ring-rose-300 dark:bg-rose-600 dark:hover:bg-rose-700 focus:outline-none dark:focus:ring-rose-800' do %>
+        <%= icon('plus', class: 'h-3 w-3 mr-2 -ml-1 fill-current') %>
+        Add new balance
+    <% end %>
+</div>

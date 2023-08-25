@@ -19,6 +19,8 @@ module ApplicationHelper
 
   def render_form_errors(resource) = render_shared_partial('form_errors', resource:)
 
+  def render_turbo_modal = render_shared_partial('turbo_modal')
+
   def render_shared_partial(partial, **) = render("shared/#{partial}", **)
 
   def render_header_partial(partial, **) = render_layout_partial("header/#{partial}", **)

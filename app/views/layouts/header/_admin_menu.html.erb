@@ -1,0 +1,14 @@
+<% if admin? %>
+    <li>
+        <%= active_link_to settings_path, class: 'flex items-center py-2 px-4 text-sm hover:bg-stone-100 dark:hover:bg-stone-600 dark:hover:text-white' do %>
+            <%= icon('cog', class: 'mr-2 w-4 h-4 text-stone-400 fill-current') %>
+            Settings
+        <% end %>
+    </li>
+    <li>
+        <%= active_link_to currencies_path, class: 'flex items-center py-2 px-4 text-sm hover:bg-stone-100 dark:hover:bg-stone-600 dark:hover:text-white' do %>
+            <%= icon('coins', class: 'mr-2 w-4 h-4 text-stone-400 fill-current') %>
+            Currencies
+        <% end %>
+    </li>
+<% end %>

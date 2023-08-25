@@ -1,0 +1,15 @@
+<div class="flex-row items-center justify-between p-4 space-y-3 sm:flex sm:space-y-0 sm:space-x-4">
+    <div class="flex-1">
+        <h1 class="mr-3 text-4xl font-semibold dark:text-white"><%= t('.heading') %></h1>
+        <p class="text-stone-500 dark:text-stone-400">Update currencies</p>
+    </div>
+    <%= label_tag :file, class: 'inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white rounded-lg bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none dark:focus:ring-green-800 cursor-pointer', data: { controller: 'upload', upload_upload_url_value: import_currencies_path } do %>
+        <%= icon('upload', class: 'h-3 w-3 mr-2 -ml-1 fill-current') %>
+        Import monthly profit (CSV)
+        <%= file_field_tag :file, class: 'hidden', data: { upload_target: 'file', action: 'input->upload#send' }, accept: 'text/csv' %>
+    <% end %>
+    <button type="button" class="flex items-center justify-center px-4 py-2 text-sm font-medium text-white rounded-lg bg-rose-700 hover:bg-rose-800 focus:ring-4 focus:ring-rose-300 dark:bg-rose-600 dark:hover:bg-rose-700 focus:outline-none dark:focus:ring-rose-800">
+        <%= icon('refresh', class: 'h-3 w-3 mr-2 -ml-1 fill-current') %>
+        Update currencies
+    </button>
+</div>

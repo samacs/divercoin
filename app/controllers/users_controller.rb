@@ -7,6 +7,8 @@ class UsersController < ApplicationController
     result = SignUpService.call(user_params)
     return render turbo_stream: turbo_replace_form(user: result.user) if result.failure?
 
+    sign_in!(result.user)
+
     redirect_to root_path, success: t('.success', user: result.user)
   end
 

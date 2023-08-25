@@ -1,0 +1,20 @@
+<thead class="text-xs text-stone-700 uppercase bg-stone-50 dark:bg-stone-700 dark:text-stone-400">
+    <tr>
+        <th scope="col" class="px-4 py-3">
+            <span class="sr-only">Expand/Colapse row</span>
+        </th>
+        <th scope="col" class="px-4 py-4">Reference</th>
+        <th scope="col" class="px-4 py-3">Amount</th>
+        <% currencies.each do |currency| %>
+            <th scope="col" class="px-4 py-3">
+                <div class="flex items-center">
+                    <%= image_tag currency.image(16), class: 'w-5 h-5 mr-2', data: { lazy_src: currency.image(64) } %>
+                    <%= currency.name %>
+                </div>
+            </th>
+        <% end %>
+        <th scope="col" class="px-4 py-3">
+            <span class="sr-only">Actions</span>
+        </th>
+    </tr>
+</thead>
