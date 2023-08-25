@@ -53,15 +53,13 @@ $ docker compose run --rm -it ./bin/rspec
 ![Home - DiverCoin](docs/divercoin.local-Home_.png)
 
 ![Sign up - DiverCoin](docs/divercoin.local-Sign-up_.png)
-ssssss
+
 ![Sign in - DiverCoin](docs/divercoin.local-Sign-in_.png)
 
 ![Home - Signed in - DiverCoin](docs/divercoin.local-Home-Signed-in_.png)
 
 ![Add balance - DiverCoin](docs/divercoin.local-Add-balance_.png)
 
-![Portfolio - DiverCoin](docs/divercoin.local_Portfolio.png)
+![Portfolio - DiverCoin](docs/divercoin.local-Portfolio_.png)
 
-![Currencies - DiverCoin](docs/divercoin.local_Currencies.png)
-
-![Settings - DiverCoin](docs/divercoin.local_Settings.png)
+![Currencies - DiverCoin](cos/divercoin.local-Currencies_.png)
