@@ -11,5 +11,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
--   User account
--   Methods to track signed in information.
+-   User account - Users can sign up and create their accounts
+-   Methods to track signed in information
+-   Users session - Users can sign in and sign out
