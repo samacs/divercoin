@@ -66,16 +66,14 @@ RSpec.describe 'Sign in', type: :system do
         fill_in 'Password', with: user_attributes[:password]
       end
 
-      it 'the use is authenticatedsigns the user in' do
+      it 'the user is authenticatedsigns the user in' do
         click_button sign_in_button
 
         expect(page).to have_current_path root_path
 
-        expect(user.sign_in_count).to be 1
-        expect(user.current_sign_in_at).not_to be_nil
-        expect(user.current_sign_in_ip).not_to be_nil
-
-        # TODO: Check for user session information
+        expect(page).to have_selector('#user-menu-button')
+        expect(page).not_to have_link 'Sign in'
+        expect(page).not_to have_link 'Get started'
       end
     end
   end

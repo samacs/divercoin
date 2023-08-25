@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get '/sign-in', to: 'sessions#new'
   post '/sign-in', to: 'sessions#create'
 
+  delete '/sign-out', to: 'sessions#destroy'
+
   # Defines the root path route ("/")
   root 'static_pages#show', page: 'home'
 

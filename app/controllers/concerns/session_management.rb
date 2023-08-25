@@ -19,6 +19,12 @@ module SessionManagement
     session[:user_id] = user.id
   end
 
+  def sign_out!
+    current_user.sign_out!
+
+    reset_session
+  end
+
   def signed_in? = current_user.present?
 
   def require_user
