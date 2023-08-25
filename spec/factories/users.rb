@@ -32,5 +32,9 @@ FactoryBot.define do
     password { Faker::Internet.password }
     password_confirmation { password }
     terms_of_service { true }
+
+    factory :admin do
+      after(:create) { |user| user.add_role(:admin) }
+    end
   end
 end

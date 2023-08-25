@@ -34,4 +34,6 @@ class Balance < ApplicationRecord
   scope :newer, -> { order(id: :desc) }
 
   def to_s = reference
+
+  def profit_at(profit, month) = (amount * ((1 + (profit / 100.0))**month)) - amount
 end

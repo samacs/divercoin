@@ -16,4 +16,5 @@ class Setting < RailsSettings::Base
   cache_prefix { 'v1' }
 
   field :title, type: :string, default: 'DiverCoin', validates: { presence: true }
+  field :messari_api_key, type: :string, default: ENV.fetch('MESSARI_API_KEY', '')
 end

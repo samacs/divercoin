@@ -4,9 +4,11 @@
     </th>
     <th scope="row" class="px-4 py-3 font-medium text-stone-900 whitespace-nowrap dark:text-white"><%= balance.reference %></th>
     <td class="px-4 py-3"><%= number_to_currency balance.amount %></td>
-    <td class="px-4 py-3"></td>
-    <td class="px-4 py-3"></td>
-    <td class="px-4 py-3"></td>
+    <% Currency.active.each do |currency| %>
+        <td class="px-4 py-3">
+            <span class="mr-2 font-semibold"><%= currency.ticker.upcase %></span><%= number_with_precision balance.amount / currency.price, precision: 4 %>
+        </td>
+    <% end %>
     <td class="px-4 py-3"></td>
 </tr>
 <tr class="hidden flex-1 overflow-x-auto w-full" id="<%= dom_id(balance, :body) %>" aria-labelledby="<%= dom_id(balance, :header) %>">

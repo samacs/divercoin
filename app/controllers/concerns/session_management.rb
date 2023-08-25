@@ -4,7 +4,7 @@ module SessionManagement
   included do
     before_action :require_user
 
-    helper_method :current_user, :signed_in?
+    helper_method :current_user, :signed_in?, :admin?
   end
 
   protected
@@ -17,6 +17,8 @@ module SessionManagement
     user.sign_in!(request.remote_ip)
 
     session[:user_id] = user.id
+
+    Rails.logger.debug { "User session saved: #{session[:user_id]}" }
   end
 
   def sign_out!
@@ -26,6 +28,8 @@ module SessionManagement
   end
 
   def signed_in? = current_user.present?
+
+  def admin? = current_user.is_admin?
 
   def require_user
     return if signed_in?

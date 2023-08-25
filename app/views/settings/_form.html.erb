@@ -1,0 +1,29 @@
+<%= form_for(Setting.new, as: :settings, url: settings_path, method: :patch) do |f| %>
+    <% if @errors.present? && @errors.any? %>
+        <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+            <%= icon('info-circle', class: 'flex-shrink-0 inline w-4 h-4 mr-3 mt-[2px] fill-current') %>
+            <span class="sr-only">Danger</span>
+            <div>
+                <span class="font-medium">Ensure that these requirements are met:</span>
+                <ul class="mt-1.5 ml-4 list-disc list-inside">
+                    <% @errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                    <% end %>
+                </ul>
+            </div>
+        </div>
+    <% end %>
+    <div class="grid gap-4 mb-4 sm:grid-cols-2 sm:gap-6 sm:mb-5">
+        <div class="sm:col-span-2">
+            <%= f.label :title, class: 'block mb-2 text-sm font-medium text-stone-900 dark:text-white' %>
+            <%= f.text_field :title, value: Setting.title, class: 'bg-stone-50 border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-rose-600 focus:border-rose-600 block w-full p-2.5 dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-rose-500 dark:focus:border-rose-500', required: true %>
+        </div>
+        <div class="sm:col-span-2">
+            <%= f.label :messari_api_key, class: 'block mb-2 text-sm font-medium text-stone-900 dark:text-white' %>
+            <%= f.text_field :messari_api_key, value: Setting.messari_api_key, class: 'bg-stone-50 border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-rose-600 focus:border-rose-600 block w-full p-2.5 dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-rose-500 dark:focus:border-rose-500', required: true %>
+        </div>
+    </div>
+    <div class="flex items-center space-x-4">
+        <%= f.button 'Update settings', type: 'submit', class: 'text-white bg-rose-700 hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-rose-600 dark:hover:bg-rose-700 dark:focus:ring-rose-800' %>
+    </div>
+<% end %>

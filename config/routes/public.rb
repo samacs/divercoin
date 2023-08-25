@@ -1,4 +1,5 @@
 # Public routes
+
 get '/sign-up', to: 'users#new'
 post '/sign-up', to: 'users#create'
 

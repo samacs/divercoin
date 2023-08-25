@@ -1,0 +1,20 @@
+<tr class="border-b dark:border-stone-700 hover:bg-stone-200 dark:hover:bg-stone-700" id="<%= dom_id(currency) %>">
+    <th scope="row" class="px-4 py-3 w-4">
+        <div class="flex items-center mr-3">
+            <%= image_tag currency.image(16), class: 'h-8 w-auto mr-3', data: { lazy_src: currency.image(64) } %>
+            <%= currency %>
+        </div>
+    </th>
+    <td class="px-4 py-3"><%= currency.ticker %></td>
+    <td class="px-4 py-3"><%= number_to_currency(currency.price) %></td>
+    <td class="px-4 py-3"><%= number_to_percentage(currency.monthly_profit, precision: 2) if currency.monthly_profit.present? %></td>
+    <td class="px-4 py-3"><%= currency.updated_at %></td>
+    <td>
+        <div class="flex items-center">
+            <% if currency.active? %>
+                <div class="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div>
+            <% end %>
+            <span><%= currency.status_link %></span>
+        </div>
+    </td>
+</tr>

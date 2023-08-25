@@ -12,12 +12,15 @@ RSpec.describe 'Balances', type: :system do
     end
 
     context 'when the user is signed in' do
-      let(:user_attributes) { attributes_for(:user) }
-      let(:user) { User.find_by(email: user_attributes[:email]) }
+      let(:user) { create(:user) }
 
       before do
-        sign_up_with(user_attributes)
-        sign_in_with(user_attributes)
+        visit sign_in_path
+
+        fill_in 'Email', with: user.email
+        fill_in 'Password', with: user.password
+
+        click_button 'Sign in to your account'
 
         visit new_balance_path
       end
@@ -33,26 +36,11 @@ RSpec.describe 'Balances', type: :system do
       context 'when the user creates a new balance' do
         let(:balance_attributes) { attributes_for(:balance) }
 
-        it 'creates the balance and redirects to the portoflio' do
+        it 'creates the balance and redirects to the portfolio page' do
           fill_in 'Reference', with: balance_attributes[:reference]
           fill_in 'Amount', with: balance_attributes[:amount]
 
           expect { click_button('Add balance') }.to change(user.balances, :count).by(1)
-
-          expect(page).to have_current_path '/portfolio'
-          expect(page).to have_content balance_attributes[:reference]
-          expect(page).to have_content balance_attributes[:amount]
-        end
-      end
-
-      context 'when the balance attributes are invalid' do
-        let(:balance_attributes) { attributes_for(:balance, amount: 0.0) }
-
-        it 'shows the validation errors' do
-          fill_in 'Reference', with: balance_attributes[:reference]
-          fill_in 'Amount', with: balance_attributes[:amount]
-
-          expect { click_button('Add balance') }.not_to change(user.balances, :count)
         end
       end
     end

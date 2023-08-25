@@ -10,7 +10,20 @@
             </tr>
         </thead>
         <tbody>
-            
+            <% currencies.each do |currency| %>
+                <tr>
+                    <th scope="row" class="px-4 py-3">
+                        <div class="flex items-center">
+                            <%= image_tag currency.image(16), class: 'w-5 h-5 mr-2', data: { lazy_src: currency.image(64) } %>
+                            <%= currency.name %>
+                        </div>
+                    </th>
+                    <% 12.times do |month| %>
+                        <td class="px-4 py-3 text-center"><%= number_to_currency(balance.profit_at(currency.monthly_profit, month), precision: 2) %></td>
+                    <% end %>
+                    <td class="px-4 py-3"><%= number_to_currency(balance.profit_at(currency.monthly_profit, 12), precision: 2) %></td>
+                </tr>
+            <% end %>
         </tbody>
     </table>
 </div>

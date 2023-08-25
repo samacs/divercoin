@@ -30,6 +30,8 @@ class User < ApplicationRecord
 
   attr_reader :password_changed
 
+  rolify
+
   has_many :balances, dependent: :destroy
 
   scope :by_email, ->(email) { where(email:) }

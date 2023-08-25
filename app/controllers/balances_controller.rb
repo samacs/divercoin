@@ -1,4 +1,5 @@
 class BalancesController < ApplicationController
+  expose :currencies, -> { Currency.active.map(&:decorate) }
   expose :balances, -> { current_user.balances.newer.map(&:decorate) }
 
   def index
