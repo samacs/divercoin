@@ -30,10 +30,10 @@ module SessionManagement
   def require_user
     return if signed_in?
 
-    redirect_back_or_to :root_path, warning: t('not_signed_in', scope: 'session_management')
+    redirect_back_or_to root_path, warning: t('not_signed_in', scope: 'session_management')
   end
 
   def require_no_user
-    redirect_back_or_to :root_path if signed_in?
+    redirect_back_or_to root_path if signed_in?
   end
 end

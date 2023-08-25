@@ -1,0 +1,16 @@
+<div class="overflow-x-auto">
+    <table class="w-full text-sm text-left text-stone-500 dark:text-stone-400">
+        <thead class="text-xs text-stone-700 uppercase bg-stone-50 dark:bg-stone-700 dark:text-stone-400">
+            <tr>
+                <th scope="col" class="px-4 py-3">Currency</th>
+                <% balance.year_from_created.each do |date| %>
+                    <th scope="col" class="px-4 py-3"><%= Date::MONTHNAMES[date.month] %></th>
+                <% end %>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+</div>

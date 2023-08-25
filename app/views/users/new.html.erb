@@ -1,14 +1,14 @@
 <%= content_for(:title, t('.title')) %>
 
-<section class="bg-[url('https://flowbite.s3.amazonaws.com/blocks/marketing-ui/authentication/background.jpg')] bg-no-repeat bg-cover bg-center bg-gray-700 bg-blend-multiply bg-opacity-60">
-    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen pt:mt-0">
-        <div class="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800">
+<section class="bg-[url('https://flowbite.s3.amazonaws.com/blocks/marketing-ui/authentication/background.jpg')] bg-no-repeat bg-cover bg-center bg-stone-700 bg-blend-multiply bg-opacity-60">
+    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:py-16 pt:mt-0">
+        <div class="w-full bg-white rounded-lg shadow md:mt-8 lg:max-w-2xl sm:max-w-md xl:p-0 dark:bg-stone-800">
             <div class="p-6 space-y-4 md:space-y-6 lg:space-y-8 sm:p-8">
-                <h2 class="text-xl font-bold leading-tight tracking-tight text-center text-gray-900 md:text-2xl dark:text-white">
+                <h2 class="text-xl font-bold leading-tight tracking-tight text-center text-stone-900 md:text-2xl dark:text-white">
                     <%= t('.heading') %>
                 </h2>
                 <%= render 'form', user: User.new %>
-                <p class="text-sm font-light text-center text-gray-500 dark:text-gray-300">
+                <p class="text-sm font-light text-center text-stone-500 dark:text-stone-300">
                     <%= link_to t('.link.sign_in'), sign_in_path, class: 'font-medium text-rose-600 hover:underline dark:text-rose-500' %>
                 </p>
             </div>

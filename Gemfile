@@ -85,3 +85,5 @@ group :test do
 end
 
 gem "decent_exposure", "~> 3.0"
+
+gem "draper", "~> 4.0"

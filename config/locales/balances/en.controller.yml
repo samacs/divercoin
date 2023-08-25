@@ -1,0 +1,5 @@
+---
+en:
+  balances:
+    create:
+      success: "New balance %{balance} created with %{amount} USD."

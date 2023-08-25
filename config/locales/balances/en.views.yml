@@ -1,0 +1,10 @@
+---
+en:
+  balances:
+    index:
+      title: 'Portfolio'
+      header:
+        heading: 'Portfolio'
+    new:
+      title: 'Add new balance'
+      heading: 'Add a new balance'
