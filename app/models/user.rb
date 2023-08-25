@@ -18,6 +18,12 @@
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #
+# Indexes
+#
+#  index_users_on_email        (email) UNIQUE
+#  index_users_on_preferences  (preferences) USING gin
+#  index_users_on_slug         (slug) UNIQUE
+#
 class User < ApplicationRecord
   include FriendlyId
   include Sessionable

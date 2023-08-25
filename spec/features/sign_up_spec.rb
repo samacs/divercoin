@@ -6,6 +6,7 @@ RSpec.describe 'Sign up', type: :system do
   before { visit sign_up_path }
 
   describe 'GET /sign-up' do
+    it { is_expected.to have_title(/sign up/i) }
     it { is_expected.to have_current_path '/sign-up' }
     it { is_expected.to have_field('First name') }
     it { is_expected.to have_field('Last name') }

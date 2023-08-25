@@ -33,7 +33,7 @@ Rails.application.configure do
     config.public_file_server.headers = {
       'Cache-Control' => "public, max-age=#{2.days.to_i}"
     }
-    config.session_store :cache_store, key: ENV.fetch('SESSION_KEY', '_coderoso'), compress: true,
+    config.session_store :cache_store, key: ENV.fetch('SESSION_KEY', '_divercoin'), compress: true,
                                        pool_size: 5, expire_after: 1.year
   else
     config.action_controller.perform_caching = false

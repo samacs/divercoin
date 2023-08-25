@@ -12,7 +12,6 @@
 #
 #  index_settings_on_var  (var) UNIQUE
 #
-# Application settings.
 class Setting < RailsSettings::Base
   cache_prefix { 'v1' }
 

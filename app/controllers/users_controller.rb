@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  skip_before_action :require_user
+
+  before_action :require_no_user
+
   def create
     result = SignUpService.call(user_params)
     return render turbo_stream: turbo_replace_form(user: result.user) if result.failure?
