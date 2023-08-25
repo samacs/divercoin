@@ -31,6 +31,19 @@ class CurrenciesController < ApplicationController
     render turbo_stream: turbo_replace_flash(e.message, :error)
   end
 
+  def export
+    respond_to do |format|
+      format.csv do
+        response.headers['Content-Type'] = 'text/csv'
+        response.headers['Content-Disposition'] = "attachment; filename=#{controller_name}.csv"
+      end
+      format.json do
+        response.headers['Content-Type'] = 'application/json; charset=utf-8'
+        response.headers['Content-Disposition'] = "attachment; filename=#{controller_name}.json"
+      end
+    end
+  end
+
   def refresh; end
 
   private

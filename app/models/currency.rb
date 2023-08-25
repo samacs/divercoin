@@ -1,3 +1,5 @@
+require 'csv'
+
 # == Schema Information
 #
 # Table name: currencies
@@ -16,6 +18,8 @@
 #  index_currencies_on_ticker  (ticker) UNIQUE
 #
 class Currency < ApplicationRecord
+  alias_attribute :last_updated, :updated_at
+
   enum :status, { active: 'active', inactive: 'inactive' }
 
   default_scope -> { in_order_of(:status, %w[active inactive]) }
@@ -30,6 +34,24 @@ class Currency < ApplicationRecord
             presence: true
   validates :ticker,
             uniqueness: { case_sensitive: false }
+
+  after_update_commit lambda {
+                        broadcast_replace_to :exportable_currencies, target: "exportable_currency_#{id}",
+                                                                     partial: 'currencies/exportable_row',
+                                                                     locals: { currency: self, highlighted: true }
+                      }
+
+  class << self
+    def to_csv
+      currencies = active
+      CSV.generate do |csv|
+        csv << ['Name', 'Ticker', 'Price', 'Last updated']
+        currencies.each do |currency|
+          csv << currency.attributes.values_at('name', 'ticker', 'price', 'updated_at')
+        end
+      end
+    end
+  end
 
   def to_s = name
 
